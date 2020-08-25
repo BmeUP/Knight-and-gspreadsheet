@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Redirect} from 'react-router-dom';
 import SignComponent from './users/SignComponent';
+import '../styles.css'
 
 const App = () => {
     return (
-            <div>
+            <div className="main-page">
                 <BrowserRouter>
                     <Route exact path="/">
                       <Redirect to="/app/login" />
