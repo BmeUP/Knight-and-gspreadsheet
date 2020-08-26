@@ -38,7 +38,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-db = client.Users
+db = client.KnightsDB
 SECRET = '0767e00916f9d1ddc7d369b1d5d2a50f36831e7208ed16c2e8397a85cd3a4650'
 ALGORITHM = "HS256"
 

@@ -1,36 +1,43 @@
 import React from 'react';
-import '../../styles.css'
 import { Formik, Field, Form } from 'formik';
 import axios from '../../axios';
+import '../../styles.css'
+import SignUpForm from './SignUpForm';
+import SignInForm from './SignInForm';
 
-const SignComponent = () => {
-    return (
-        <div className="sign-form">
-            <Formik
-            initialValues={{
-                email: '',
-                password: '',
-                }}
-            onSubmit={async values => {
-                let data;
-                data = {
-                    "method": "create_user",
-                    "data": values
-                }
-                await axios.post('/user/', data)
-              }}
-            >
-                <Form>
-                    <label htmlFor="email" className="form-title">Email</label>
-                    <Field id="email" name="email" placeholder="email@domain.com" />
+class SignComponent extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            signup: false
+        };
+    }
 
-                    <label htmlFor="password" className="form-title">Password</label>
-                    <Field id="password" name="password" type="password" />
-                    <button type="submit">Submit</button>
-                </Form>
-            </Formik>
-        </div>
-    )
+    formChoose = () => {
+        if(!this.state.signup){
+            return <SignInForm />
+        }else{
+            return <SignUpForm />
+        }
+    }
+
+    sigUpPick = () => {
+        this.setState({
+            signup: true
+        })
+    }
+
+    render(){
+        return(
+            <div className="sign-form">
+                {this.formChoose()}
+                <span className="acc-span" onClick={this.sigUpPick}>
+                    Don't have an account yet?
+                </span>
+            </div>
+        )
+    }
+
 }
 
 export default SignComponent;

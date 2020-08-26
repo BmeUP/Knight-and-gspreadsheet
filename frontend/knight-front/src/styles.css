@@ -43,3 +43,19 @@ body{
     color: #fff;
     padding-top: 15px;
 }
+
+.btn-submit{
+    margin-top: 5%;
+}
+
+.acc-span{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.acc-span:hover{
+    color: #fbfb00;
+}
