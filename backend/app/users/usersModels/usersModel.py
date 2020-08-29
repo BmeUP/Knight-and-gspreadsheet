@@ -1,0 +1,10 @@
+from pydantic import BaseModel
+
+
+class User(BaseModel):
+    email: str
+    password: str
+
+
+class ResponseUser(BaseModel):
+    email: str

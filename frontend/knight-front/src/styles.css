@@ -13,49 +13,8 @@ body{
 
 }
 
-.main-background{
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(81,9,121,1) 100%, rgba(0,212,255,1) 100%);
-}
-
 .main-page{
     display: flex;
     width: 100%;
     height: 100%;
-}
-
-.sign-form{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10%;
-}
-
-.sign-form form{
-    display: flex;
-    flex-direction: column;
-}
-
-.form-title{
-    display: flex;
-    justify-content: center;
-    color: #fff;
-    padding-top: 15px;
-}
-
-.btn-submit{
-    margin-top: 5%;
-}
-
-.acc-span{
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-    color: #ffffff;
-    cursor: pointer;
-}
-
-.acc-span:hover{
-    color: #fbfb00;
 }

@@ -26,7 +26,7 @@ const SignInForm = () => {
 
                     <label htmlFor="password" className="form-title">Password</label>
                     <Field id="password" name="password" type="password" />
-                    <button className="btn-submit" type="submit">SignIp</button>
+                    <button className="btn-submit" type="submit">SignIn</button>
                 </Form>
             </Formik>
         </div>
