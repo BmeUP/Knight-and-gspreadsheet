@@ -1,9 +1,9 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import HTTPException, APIRouter
 from passlib.hash import pbkdf2_sha256
 from ...db.database import db
 from ..usersModels.usersModel import User, ResponseUser
 
-user_router = APIRouter()
+user_create_router = APIRouter()
 
 
 def existing_user(email: str):
@@ -14,7 +14,7 @@ def existing_user(email: str):
         return False
 
 
-@user_router.post("/users/create", response_model=ResponseUser)
+@user_create_router.post("/users/create", response_model=ResponseUser)
 def create_user(user: User):
     if not existing_user(user.email):
         db.Users.insert_one({
@@ -24,5 +24,5 @@ def create_user(user: User):
 
         return user
     else:
-        raise HTTPException(status_code=400, detail="User with this email already exist")
-        # return {"email": "User with this email alredy exist"}
+        raise HTTPException(status_code=400,
+                            detail="User with this email already exist")

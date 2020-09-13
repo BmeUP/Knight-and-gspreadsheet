@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from "react-router-dom";
 import { Formik, Field, Form } from 'formik';
 import axios from '../../axios';
 
@@ -7,10 +8,10 @@ class SignUpForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            email_error: false
+            email_error: false,
+            redirect: false
         };
     }
-
 
     emailError = () => {
         if(this.state.email_error){
@@ -24,11 +25,22 @@ class SignUpForm extends React.Component{
 
     emailValidate = (value) => {
         if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)){
-            return(console.info('unvalid'))
+            console.info(['email', value])
+            return(
+                <div>
+                    shit
+                </div>
+            )
+        }else{
+            return (null)
         }
     }
 
     render(){
+        if(this.state.redirect){
+            return <Redirect to="/app/login" />
+        }
+
         return (
             <div className="sign-form">
                 <Formik
@@ -44,11 +56,15 @@ class SignUpForm extends React.Component{
                     }
                     await axios.post('/users/create/', data).then(
                         res => {
-                            console.log(['res', res])
+                            if(res.status === 200){
+                                this.setState({redirect: true});
+                            }
                         }
                     ).catch(
                         err => {
-                            this.setState({email_error: true})
+                            if(err.request.responseText){
+                                this.setState({email_error: true});
+                            }
                         }
                     )
                   }}
@@ -56,11 +72,10 @@ class SignUpForm extends React.Component{
                     <Form>
                         <label htmlFor="email" className="form-title">Email</label>
                         <Field id="email" name="email" placeholder="email@domain.com"
-                            validate={this.emailValidate} />
-
+                            validate={this.emailValidate} type='email' required/>
                         <label htmlFor="password" className="form-title">Password</label>
-                        <Field id="password" name="password" type="password" />
-                        <button className="btn-submit" type="submit">SignUp</button>
+                        <Field id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  name="password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" type="password" required />
+                        <button className="btn-submit" type="submit">Sign Up</button>
                         {this.emailError()}
                     </Form>
                 </Formik>

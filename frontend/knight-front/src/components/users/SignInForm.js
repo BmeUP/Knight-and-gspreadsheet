@@ -1,36 +1,55 @@
 import React from 'react';
+import { Redirect } from "react-router-dom";
 import { Formik, Field, Form } from 'formik';
-import axios from '../../axios';
+import axios_instance from '../../axios';
 
 
-const SignInForm = () => {
-    return (
-        <div className="sign-form">
-            <Formik
-            initialValues={{
-                email: '',
-                password: '',
-                }}
-            onSubmit={async values => {
-                let data;
-                data = {
-                    "method": "create_user",
-                    "data": values
-                }
-                await axios.post('/user/', data)
-              }}
-            >
-                <Form>
-                    <label htmlFor="email" className="form-title">Email</label>
-                    <Field id="email" name="email" placeholder="email@domain.com" />
+class SignInForm extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            redirect: false
+        };
+    }
 
-                    <label htmlFor="password" className="form-title">Password</label>
-                    <Field id="password" name="password" type="password" />
-                    <button className="btn-submit" type="submit">SignIn</button>
-                </Form>
-            </Formik>
-        </div>
-    )
+    render(){
+        if(this.state.redirect){
+            return <Redirect to="/app/huy" />
+        }
+
+        return (
+            <div className="sign-form">
+                <Formik
+                initialValues={{
+                    email: '',
+                    password: '',
+                    }}
+                onSubmit={async values => {
+                    let data;
+                    data = {
+                        "email": values.email,
+                        "password": values.password
+                    }
+                    await axios_instance.post('/users/login/', data).then(
+                        res => {
+                            localStorage.setItem("token", res.data.token)
+                            this.setState({redirect: true});
+                        }
+                    )
+                  }}
+                >
+                    <Form>
+                        <label htmlFor="email" className="form-title">Email</label>
+                        <Field id="email" name="email" placeholder="email@domain.com" />
+
+                        <label htmlFor="password" className="form-title">Password</label>
+                        <Field id="password" name="password" type="password" />
+                        <button className="btn-submit" type="submit">Sign In</button>
+                    </Form>
+                </Formik>
+            </div>
+        )
+    }
 };
 
 export default SignInForm;

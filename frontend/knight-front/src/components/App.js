@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Redirect} from 'react-router-dom';
 import SignComponent from './users/SignComponent';
+import Rand from './users/randComponent';
 import '../styles.css'
 
 const App = () => {
@@ -10,10 +11,11 @@ const App = () => {
                     <Route exact path="/">
                       <Redirect to="/app/login" />
                     </Route>
-                    <Route path="*">
+                    {/* <Route path="*">
                         <Redirect to="/app/login" />
-                    </Route>
+                    </Route> */}
                     <Route exact path="/app/login" component={SignComponent} />
+                    <Route exact path="/app/huy" component={Rand} />
                 </BrowserRouter>
             </div>
         )
