@@ -8,8 +8,19 @@ class SignInForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            redirect: false
+            redirect: false,
+            failed_login: false
         };
+    };
+
+    failed_login = () => {
+        if(this.state.failed_login){
+            return(
+                <div className="email-error" >
+                    Incorrect email or password
+                </div>
+            )
+        }
     }
 
     render(){
@@ -32,8 +43,12 @@ class SignInForm extends React.Component{
                     }
                     await axios_instance.post('/users/login/', data).then(
                         res => {
-                            localStorage.setItem("token", res.data.token)
+                            localStorage.setItem("token", res.data.token);
                             this.setState({redirect: true});
+                        }
+                    ).catch(
+                        error => {
+                            this.setState({redirect: false, failed_login: true});
                         }
                     )
                   }}
@@ -47,6 +62,7 @@ class SignInForm extends React.Component{
                         <button className="btn-submit" type="submit">Sign In</button>
                     </Form>
                 </Formik>
+                {this.failed_login()}
             </div>
         )
     }

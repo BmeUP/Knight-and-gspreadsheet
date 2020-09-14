@@ -1,6 +1,5 @@
 from jose import jwt
 from ..db.database import db
-from ..logger.main_logger import logger
 
 SECRET = '0767e00916f9d1ddc7d369b1d5d2a50f36831e7208ed16c2e8397a85cd3a4650'
 ALGORITHM = "HS256"
