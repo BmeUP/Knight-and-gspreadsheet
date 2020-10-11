@@ -25,7 +25,7 @@ class SignInForm extends React.Component{
 
     render(){
         if(this.state.redirect){
-            return <Redirect to="/app/huy" />
+            return <Redirect to="/app/tables" />
         }
 
         return (

@@ -1,15 +1,19 @@
 import React from 'react';
 import axios_instance from '../../axios';
 
-class Rand extends React.Component{
+class MainPage extends React.Component{
 
     componentDidMount(){
         axios_instance.post('/users/send');
     }
 
     render(){
-        return (<div>H</div>)
+        return (
+            <div>
+                Main Components
+            </div>
+        )
     }
 }
 
-export default Rand;
+export default MainPage;
