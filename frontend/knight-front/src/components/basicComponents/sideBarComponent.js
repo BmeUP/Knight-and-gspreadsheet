@@ -1,12 +1,12 @@
 import React from 'react';
 import './basic.css';
 
-class Header extends React.Component{
+class SideBar extends React.Component{
 
-    showHeader = () => {
+    showSideBar = () => {
             return(
                 <p>
-                    Header here
+                    SideBar
                 </p>
             )
         }
@@ -15,7 +15,7 @@ class Header extends React.Component{
         if(!window.location.href.includes('app/login')){
             return (
                 <div className="maindiv">
-                    {this.showHeader()}
+                    {this.showSideBar()}
                 </div>
             )
         }else{
@@ -24,4 +24,4 @@ class Header extends React.Component{
     }
 }
 
-export default Header;
+export default SideBar;
