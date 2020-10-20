@@ -2,6 +2,13 @@ import React from 'react';
 import './basic.css';
 
 class Header extends React.Component{
+    constructor(props){
+        super(props);
+    };
+
+    componentDidMount(){
+        console.info(['sdafsadf'])
+    }
 
     showHeader = () => {
             return(
@@ -12,15 +19,11 @@ class Header extends React.Component{
         }
 
     render(){
-        if(!window.location.href.includes('app/login')){
-            return (
-                <div className="maindiv">
-                    {this.showHeader()}
-                </div>
-            )
-        }else{
-            return null;
-        }
+        return(
+            <div className="header">
+                {this.showHeader()}
+            </div>
+        )
     }
 }
 
