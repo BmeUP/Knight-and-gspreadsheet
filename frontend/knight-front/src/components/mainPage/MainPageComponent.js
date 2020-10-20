@@ -1,5 +1,8 @@
 import React from 'react';
 import axios_instance from '../../axios';
+import Header from '../basicComponents/headerComponent';
+import Sidebar  from '../basicComponents/sideBarComponent';
+import styles  from './styles.css'
 
 class MainPage extends React.Component{
 
@@ -9,8 +12,16 @@ class MainPage extends React.Component{
 
     render(){
         return (
-            <div>
-                Main Components
+            <div className="container">
+                <div className="flex-100">
+                    <Header />
+                </div>
+                <div className="pure-display-flex">
+                    <Sidebar />
+                    <div>
+                        GGG
+                    </div>
+                </div>
             </div>
         )
     }

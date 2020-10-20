@@ -17,19 +17,18 @@ class  App extends React.Component{
                 };
         }else{
             return {
-                display: 'flex'
+                display: 'flex',
+                width: '100%',
+                height: '100%'
             }
         }
 
     }
 
     render(){
-        console.log(['location', window.location.href])
+        console.info(['url', window.location.href]);
         return (
             <div className="main-page">
-                <Header />
-                <div style={this.st()}>
-                    <SideBar />
                     <BrowserRouter>
                         <Route exact path="/">
                           <Redirect to="/app/login" />
@@ -37,7 +36,6 @@ class  App extends React.Component{
                         <Route exact path="/app/login" component={SignComponent} />
                         <Route exact path="/app/tables" component={MainPage} />
                     </BrowserRouter>
-                </div>
             </div>
         )
     }

@@ -12,15 +12,11 @@ class SideBar extends React.Component{
         }
 
     render(){
-        if(!window.location.href.includes('app/login')){
-            return (
-                <div className="maindiv">
-                    {this.showSideBar()}
-                </div>
-            )
-        }else{
-            return null;
-        }
+        return(
+            <div className="sidebar">
+                {this.showSideBar()}
+            </div>
+        )
     }
 }
 
