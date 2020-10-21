@@ -5,8 +5,30 @@
     height: 60px;
 }
 
+.header-child{
+    display: inline-flex;
+    width: 100%;
+}
+
+.flex-0-0-90{
+    flex: 0 0 90%;
+}
+
+.logout-div{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+    padding-top: 15px;
+}
+
+.logout-btn{
+    cursor: pointer;
+    color: red;
+}
+
 .sidebar{
     display: flex;
     background-color: bisque;
-    flex: 0 0 15%;
+    flex: 0 0 10%;
 }
