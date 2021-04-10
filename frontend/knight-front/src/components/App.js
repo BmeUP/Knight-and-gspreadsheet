@@ -26,7 +26,6 @@ class  App extends React.Component{
     }
 
     render(){
-        console.info(['url', window.location.href]);
         return (
             <div className="main-page">
                     <BrowserRouter>

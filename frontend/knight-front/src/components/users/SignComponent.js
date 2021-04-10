@@ -30,7 +30,7 @@ class SignComponent extends React.Component{
     donHaveAcc = () => {
         if(!this.state.signup){
             return(
-                <span className="acc-span" onClick={this.sigUpPick}>
+                <span className="acc-span animate__animated animate__flip" onClick={this.sigUpPick}>
                     Don't have an account yet?
                 </span>
             )

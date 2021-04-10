@@ -1,6 +1,6 @@
 .header{
     display: flex;
-    background-color: bisque;
+    background-color: unset;
     flex: 0 0 100%;
     height: 60px;
 }
@@ -8,14 +8,15 @@
 .header-child{
     display: inline-flex;
     width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-.flex-0-0-90{
-    flex: 0 0 90%;
+.flex-0-0-83{
+    flex: 0 0 83%;
 }
 
 .logout-div{
-    width: 100%;
     display: flex;
     justify-content: flex-end;
     padding-right: 15px;
@@ -24,7 +25,16 @@
 
 .logout-btn{
     cursor: pointer;
-    color: red;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 6px !important;
+    padding: 5px;
+    height: 20px;
+}
+
+.logout-btn:hover{
+    color: #e1e4e8;
+    border: 1px solid #e1e4e8;
 }
 
 .sidebar{

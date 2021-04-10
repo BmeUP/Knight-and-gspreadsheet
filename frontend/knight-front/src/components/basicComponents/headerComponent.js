@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from "react-router-dom";
+import axios_instance from "../../axios";
 import './basic.css';
 
 class Header extends React.Component{
@@ -9,9 +10,9 @@ class Header extends React.Component{
             logout: false
         }
     };
+    
 
     componentDidMount(){
-        console.info(['sdafsadf'])
     }
 
     logout_btn = () => {
@@ -19,6 +20,22 @@ class Header extends React.Component{
             <div className="logout-btn" onClick={this.logout}>
                 Logout
             </div>
+        )
+    }
+
+    check_tables_btn = () => {
+        return (
+            <div className="logout-btn" onClick={this.check_tables}>
+                Check tables
+            </div>
+        )
+    }
+
+    check_tables = () => {
+        axios_instance.post('/check_tables').then(
+            res => {
+                console.info(['res', res]);
+            }
         )
     }
 
@@ -31,9 +48,12 @@ class Header extends React.Component{
     showHeader = () => {
             return(
                 <div className="header-child">
-                    <span className="flex-0-0-90">
+                    <span className="flex-0-0-83">
                         Header here
                     </span>
+                    <div className="logout-div">
+                        {this.check_tables_btn()}
+                    </div>
                     <div className="logout-div">
                         {this.logout_btn()}
                     </div>

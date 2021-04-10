@@ -17,7 +17,6 @@ class MainPage extends React.Component{
                     <Header />
                 </div>
                 <div className="pure-display-flex">
-                    <Sidebar />
                     <div>
                         GGG
                     </div>

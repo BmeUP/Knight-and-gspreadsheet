@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect, useLocation } from "react-router-dom";
 import { Formik, Field, Form } from 'formik';
 import axios_instance from '../../axios';
+import styles  from '../../styles.css';
 
 
 class SignInForm extends React.Component{
@@ -30,6 +31,10 @@ class SignInForm extends React.Component{
 
         return (
             <div className="sign-form">
+                <div className="display-flex">
+                    <div className="animate__animated animate__fadeInLeftBig">Knight`s</div>
+                    <div className="animate__animated animate__fadeInRightBig">&nbsp; Valor</div>
+                </div>
                 <Formik
                 initialValues={{
                     email: '',
@@ -55,11 +60,11 @@ class SignInForm extends React.Component{
                 >
                     <Form>
                         <label htmlFor="email" className="form-title">Email</label>
-                        <Field id="email" name="email" placeholder="email@domain.com" />
+                        <Field className="inputs_and_btns" id="email" name="email" placeholder="email@domain.com" />
 
                         <label htmlFor="password" className="form-title">Password</label>
-                        <Field id="password" name="password" type="password" />
-                        <button className="btn-submit" type="submit">Sign In</button>
+                        <Field className="inputs_and_btns" id="password" name="password" type="password" />
+                        <button className="btn-submit inputs_and_btns" type="submit">Sign In</button>
                     </Form>
                 </Formik>
                 {this.failed_login()}

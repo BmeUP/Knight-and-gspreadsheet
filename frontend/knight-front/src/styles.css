@@ -20,3 +20,12 @@ body{
     flex-wrap: wrap;
     align-content: flex-start;
 }
+
+.inputs_and_btns{
+    border-radius: 10px;
+    outline: 0 !important;
+    padding: 5px;
+}
+
+
+
